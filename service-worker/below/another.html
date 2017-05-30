@@ -1,4 +1,4 @@
-/*
+<!--
 Copyright 2016 Google Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,22 +12,29 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-*/
-(function() {
-  'use strict';
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-  // TODO - 3.1: Add install and activate event listeners
-  self.addEventListener('install', (event) => {
-    console.log('service worker installing...');
-    // TODO 3.4: Skip waiting...
-  });
+  <!-- Set the viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Set character encoding -->
+  <meta charset="utf-8">
+  <!-- Set title -->
+  <title>Another</title>
+  <!-- Add stylesheet -->
+  <link href="../styles/another.css" rel="stylesheet">
 
-  self.addEventListener('activate', (event) => {
-    console.log('service worker activating...');
-  });
+</head>
 
-  // TODO - 3.3: I'm a new service worka
+<body>
 
-  // TODO - 4: Add fetch listener
+  <h1>Another Page</h1>
 
-})();
+  <a href="../index.html">Back</a>
+
+  <script src="../js/another.js"></script>
+
+</body>
+</html>
