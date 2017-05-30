@@ -1,6 +1,9 @@
 # learn-pwa
 Repo for Progressive Web app course by google
+
+<p>
 The labs are based on Google's Developer Training Labs located here: https://github.com/google-developer-training/pwa-training-labs
+</p>
 
 Progressive Web apps course is here:
 https://developers.google.com/web/ilt/pwa/
