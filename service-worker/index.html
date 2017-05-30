@@ -44,6 +44,18 @@ limitations under the License.
 
         // TODO - 2: Regsiter the service worker
 
+        if(!navigator.serviceWorker) {
+          console.log('service worker not supported');
+          return;
+        }
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => {
+            console.log('js has been registered');
+          })
+          .catch((error) => {
+            console.log('shit broke, fix it', error);
+          })
+
       })();
     </script>
 
