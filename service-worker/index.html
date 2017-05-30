@@ -49,8 +49,8 @@ limitations under the License.
           return;
         }
         navigator.serviceWorker.register('service-worker.js')
-          .then(() => {
-            console.log('js has been registered');
+          .then((regis) => {
+            console.log('js has been registered', regis.scope);
           })
           .catch((error) => {
             console.log('shit broke, fix it', error);
