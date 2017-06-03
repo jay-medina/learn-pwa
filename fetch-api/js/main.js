@@ -30,11 +30,17 @@ var app = (function() {
   }
 
   function fetchJSON() {
-    fetch('examples/animals.json').then(logResult).catch(logError);
+    fetch('examples/meow-meow.json')
+      .then(logResult)
+      .catch(logError);
   }
 
   function validateResponse(response) {
-    // TODO 2.3
+   if(!response.ok) {
+     throw new Error(response.statusText);
+   }
+
+   return response;
   }
 
   function readResponseAsJSON(response) {
