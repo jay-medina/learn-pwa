@@ -24,10 +24,13 @@ var app = (function() {
     console.log('Looks like there was a problem: \n', error);
   }
 
-  // TODO 2.1a
+  if(!window.fetch) {
+    console.log('Fetch API not found, try including the polyfill');
+    return;
+  }
 
   function fetchJSON() {
-    // TODO 2.1b
+    fetch('examples/animals.json').then(logResult).catch(logError);
   }
 
   function validateResponse(response) {
