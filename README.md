@@ -17,5 +17,12 @@ https://developers.google.com/web/ilt/pwa/
 
 1) `npm install http-server -g`
 2) Start up the localhost by typing `http-server -p 8080 -a localhost -c 0`
-2) navigate to service-worker directory
+3) navigate to service-worker directory
 
+## Fetch api Lab
+
+> **Links here:**
+> - Lab: https://developers.google.com/web/ilt/pwa/lab-fetch-api
+
+1) `npm run start` 
+2) navigate to fetch-api lab
