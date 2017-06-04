@@ -50,15 +50,24 @@ var app = (function() {
   }
 
   function showImage(responseAsBlob) {
-    //  TODO 3a
+    const container = document.getElementById('container');
+    const imgElem = document.createElement('img');
+    container.appendChild(imgElem);
+
+    const imgUrl = URL.createObjectURL(responseAsBlob);
+    imgElem.src = imgUrl;
   }
 
   function readResponseAsBlob(response) {
-    // TODO 3b
+    return response.blob();
   }
 
   function fetchImage() {
-    // TODO 3c
+    fetch('examples/kitten.jpg')
+     .then(validateResponse)
+     .then(readResponseAsBlob)
+     .then(showImage)
+     .catch(logError)
   }
 
   function showText(responseAsText) {
