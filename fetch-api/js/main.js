@@ -89,11 +89,19 @@ var app = (function() {
   }
 
   function headRequest() {
-    // TODO 5.1
+    fetch('examples/words.txt', {
+      method: 'HEAD',
+    })
+    .then(validateResponse)
+     .then(logSize)
+     .then(readResponseAsText)
+     .then(logResult)
+     .catch(logError)
   }
 
   function logSize(response) {
-    // TODO 5.2
+    console.log(response.headers.get('content-length'));
+    return response;
   }
 
   /* NOTE: Never send unencrypted user credentials in production! */
