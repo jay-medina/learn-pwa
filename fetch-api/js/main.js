@@ -106,7 +106,14 @@ var app = (function() {
 
   /* NOTE: Never send unencrypted user credentials in production! */
   function postRequest() {
-    // TODO 6.2
+    fetch('http://localhost:5000/', {
+      method: 'POST',
+      body: 'name=david&message=hello'
+    })
+    .then(validateResponse)
+    .then(readResponseAsText)
+    .then(logResult)
+    .catch(logError);
   }
 
   // Don't worry if you don't understand this, it's not part of the Fetch API.
