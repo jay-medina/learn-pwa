@@ -71,15 +71,21 @@ var app = (function() {
   }
 
   function showText(responseAsText) {
-    //  TODO 4a
+    const message = document.getElementById('message');
+    message.textContent = responseAsText;
   }
 
   function readResponseAsText(response) {
-    // TODO 4b
+    
+    return response.text();
   }
 
   function fetchText() {
-    // TODO 4c
+    fetch('examples/words.txt')
+     .then(validateResponse)
+     .then(readResponseAsText)
+     .then(showText)
+     .catch(logError)
   }
 
   function headRequest() {
