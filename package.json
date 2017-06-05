@@ -1,0 +1,22 @@
+{
+  "name": "learn-pwa",
+  "version": "1.0.0",
+  "description": "Repo for Progressive Web app course by google",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server -p 8080 -a localhost -c 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrfunkycold/learn-pwa.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrfunkycold/learn-pwa/issues"
+  },
+  "homepage": "https://github.com/mrfunkycold/learn-pwa#readme",
+  "dependencies": {
+    "http": "0.0.0"
+  }
+}
