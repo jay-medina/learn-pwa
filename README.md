@@ -8,6 +8,11 @@ The labs are based on Google's Developer Training Labs located here: https://git
 Progressive Web apps course is here:
 https://developers.google.com/web/ilt/pwa/
 
+## Cache api Lab
+
+> **Links here:**
+> - Lab: https://developers.google.com/web/ilt/pwa/lab-caching-files-with-service-worker
+
 
 ## Service Worker Lab
 
