@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-(function() {
+(function () {
   'use strict';
 
   var filesToCache = [
@@ -32,7 +32,7 @@ limitations under the License.
 
   const staticCacheName = 'pages-cache-v1';
 
-  self.addEventListener('install', function(event) {
+  self.addEventListener('install', function (event) {
     console.log('Attempting to install service worker and cache static assets');
     event.waitUntil(
       caches.open(staticCacheName)
@@ -40,7 +40,26 @@ limitations under the License.
     );
   });
 
-  // TODO 3 - intercept network requests
+  self.addEventListener('fetch', function (event) {
+    console.log('Fetch event for ', event.request.url);
+    event.respondWith(cacheMatching(event));
+  });
+
+  function cacheMatching(event) {
+    return caches.match(event.request).then(function (response) {
+      if (response) {
+        console.log('Found', event.request.url, 'in cache');
+        return response;
+      }
+      console.log('Network request for', event.request.url);
+      return fetch(event.request);
+
+      // TODO 4 - Add fetched files to the cache
+    }).catch((error) => {
+
+      // TODO 6 - Respond with custom offline page
+    });
+  }
 
   // TODO 7 - delete unused caches
 
