@@ -45,6 +45,20 @@ limitations under the License.
     event.respondWith(cacheMatching(event));
   });
 
+  function fetchFile(event) {
+    return fetch(event.request).then(function (response) {
+        if (response.status === 404) {
+          return caches.match('pages/404.html');
+        }
+        return caches.open(staticCacheName).then(function (cache) {
+          if (event.request.url.indexOf('test') < 0) {
+            cache.put(event.request.url, response.clone());
+          }
+          return response;
+        });
+      });
+  }
+
   function cacheMatching(event) {
     return caches.match(event.request).then(function (response) {
       if (response) {
@@ -52,12 +66,10 @@ limitations under the License.
         return response;
       }
       console.log('Network request for', event.request.url);
-      return fetch(event.request);
-
-      // TODO 4 - Add fetched files to the cache
+      return fetchFile(event);
     }).catch((error) => {
-
-      // TODO 6 - Respond with custom offline page
+      console.log('Error, ', error);
+      return caches.match('pages/offline.html');
     });
   }
 
