@@ -30,7 +30,7 @@ limitations under the License.
     'pages/404.html'
   ];
 
-  const staticCacheName = 'pages-cache-v1';
+  const staticCacheName = 'pages-cache-v2';
 
   self.addEventListener('install', function (event) {
     console.log('Attempting to install service worker and cache static assets');
@@ -73,6 +73,22 @@ limitations under the License.
     });
   }
 
-  // TODO 7 - delete unused caches
+  self.addEventListener('activate', function(event) {
+  console.log('Activating new service worker...');
+
+  var cacheWhitelist = [staticCacheName];
+
+  event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.map(function(cacheName) {
+          if (cacheWhitelist.indexOf(cacheName) === -1) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
+});
 
 })();
