@@ -37,7 +37,7 @@ var app = (function() {
   }
 
   function flagChain(country) {
-    // TODO 2.2 - use the promise
+    return getImageName(country).then(logSuccess).catch(logError);
   }
 
   function spainTest(country) {
