@@ -52,12 +52,27 @@ var app = (function() {
   }
 
   function allFlags(promiseList) {
-    // TODO
+    return Promise.all(promiseList).catch(returnFalse);
   }
 
-  // TODO 4.1 - Promise.all
+  const promises = [
+    getImageName('Spain'),
+    getImageName('chile'),
+    getImageName('123'),
+  ];
+  allFlags(promises).then((res) => console.log(res));
 
-  // TODO 4.2 - Promise.race
+  var promise1 = new Promise(function (resolve) {
+    setTimeout(resolve, 500, 'one');
+  });
+
+  var promise2 = new Promise(function (resolve) {
+    setTimeout(resolve, 100, 'two');
+  });
+
+  Promise.race([promise1, promise2])
+    .then(logSuccess)
+    .catch(logError);
 
   /* Helper functions */
 
