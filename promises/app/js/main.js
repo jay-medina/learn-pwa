@@ -32,8 +32,10 @@ var app = (function() {
     return promiseOfImageName;
   }
 
-  function isSpain(country) {
-    // TODO - Optional
+  function isSpain(country = '') {
+    return new Promise((res, rej) => {
+      return (country.toLowerCase() === 'spain')? res() : rej();
+    });
   }
 
   function flagChain(country) {
@@ -41,7 +43,7 @@ var app = (function() {
   }
 
   function spainTest(country) {
-    // TODO - Optional
+    return isSpain(country).then(() => true).catch(() => false);
   }
 
   function allFlags(promiseList) {
