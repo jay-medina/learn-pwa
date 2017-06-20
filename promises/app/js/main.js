@@ -39,11 +39,16 @@ var app = (function() {
   }
 
   function flagChain(country) {
-    return getImageName(country).then(logSuccess).catch(logError);
+    return getImageName(country)
+      .catch(fallbackName)
+      .then(fetchFlag)
+      .then(processFlag)
+      .then(appendFlag)
+      .catch(logError)
   }
 
   function spainTest(country) {
-    return isSpain(country).then(() => true).catch(() => false);
+    return isSpain(country).then(returnTrue).catch(returnFalse);
   }
 
   function allFlags(promiseList) {
